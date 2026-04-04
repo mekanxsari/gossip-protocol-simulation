@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simplified Gossip Protocol</title>
+  <link rel="stylesheet" href="static/styles/app.css">
+  <link rel="icon" type="image/png" href="static/images/favicon.png">
+</head>
+<body>
+  <div class="left">
+    <div class="circle" id="circle"></div>
+  </div>
+
+  <div class="right">
+    <div class="logo">
+      <img src="static/images/logo.jpg">
+    </div>
+
+    <div class="stat-row">
+      <div class="stat">
+        <div class="val" id="statInformed">0</div>
+        <div class="lbl">Informed</div>
+      </div>
+      <div class="stat">
+        <div class="val" id="statPending">—</div>
+        <div class="lbl">Pending</div>
+      </div>
+    </div>
+    <div class="stat-row" style="margin-top:-8px">
+      <div class="stat stat--warn">
+        <div class="val" id="statDead">0</div>
+        <div class="lbl">Dead</div>
+      </div>
+      <div class="stat stat--amber">
+        <div class="val" id="statSlow">0</div>
+        <div class="lbl">Slow</div>
+      </div>
+    </div>
+    <div class="stat-row" style="margin-top:-8px">
+      <div class="stat stat--msg">
+        <div class="val" id="statMsgs">0</div>
+        <div class="lbl">Messages sent</div>
+      </div>
+      <div class="stat stat--round">
+        <div class="val" id="statRound">—</div>
+        <div class="lbl">Round</div>
+      </div>
+    </div>
+
+    <div class="tolerance-banner" id="toleranceBanner" style="display:none"></div>
+
+    <div class="divider"></div>
+
+    <div class="field-group">
+      <div class="count-row">
+        <label>Node count</label>
+        <div class="btn-group">
+          <button class="btn" id="minus">−</button>
+          <span class="count-val" id="countVal">20</span>
+          <button class="btn" id="plus">+</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Scenario</label>
+        <select id="scenario">
+          <option value="1">1 — All nodes live</option>
+          <option value="2">2 — Some dead nodes</option>
+          <option value="3">3 — Dead + slow nodes</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Fanout</label>
+        <input type="number" id="fanout" value="2" min="1" max="8" />
+      </div>
+
+      <div class="field" id="fieldDead">
+        <label>Dead nodes</label>
+        <input type="number" id="deadCount" value="2" min="0" max="10" />
+      </div>
+
+      <div class="field" id="fieldSlow">
+        <label>Slow nodes</label>
+        <input type="number" id="slowCount" value="2" min="0" max="10" />
+      </div>
+
+      <div class="field">
+        <label>Message / Data</label>
+        <input type="text" id="msgInput" placeholder="Example: He cheated at exam" maxlength="50" />
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="field-group">
+      <div class="legend-row">
+        <span class="dot dot--informed"></span><span class="legend-lbl">Informed</span>
+        <span class="dot dot--dead"></span><span class="legend-lbl">Dead</span>
+        <span class="dot dot--slow"></span><span class="legend-lbl">Slow</span>
+        <span class="dot dot--live"></span><span class="legend-lbl">Live</span>
+      </div>
+    </div>
+
+    <div class="round-log" id="roundLog">
+      <div class="log-empty">Press Apply to start</div>
+    </div>
+
+    <div class="result-box" id="resultBox" style="display:none">
+      <div class="result-title">Final Result</div>
+      <div class="result-body" id="resultBody"></div>
+    </div>
+
+    <button class="apply-btn" id="applyBtn">Start</button>
+  </div>
+
+  <script src="static/scripts/app.js"></script>
+</body>
+</html>
