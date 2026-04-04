@@ -514,7 +514,7 @@ function initSim() {
 // Execute one round of gossip simulation
 function stepSim() {
     simRound++;
-    addLog(`── Round ${simRound} ──────────────────`, "log--skip");
+    addLog(`────────────────── Round ${simRound} ──────────────────`, "log--skip");
 
     const fanout = getFanout();
 
